@@ -128,6 +128,7 @@ class model():
         # visualization by heatmep
         cm = confusion_matrix(self.y_test, predicted_labels)
         sns.heatmap(cm, annot=True, fmt="d", cmap="Blues")
+        plt.title("Distribution of results")
         plt.xlabel('Predicted')
         plt.ylabel('Actual')
         plt.savefig(f"result/{self.hyperparameter}result.png")
@@ -135,11 +136,14 @@ class model():
 
         # visualization of loss history
         plt.plot(range(len(self.history['loss'])), self.history['loss'], 
-                label="loss of epochs")
+                label="training loss")
+        plt.plot(range(len(self.history['val_loss'])), self.history['val_loss'], 
+                label="validation loss")
         plt.title(f'{self.stock} loss during training in epochs')
         plt.xlabel('epoch')
         plt.ylabel('loss')
         plt.tight_layout()
+        plt.legend()
         plt.savefig(f"result/{self.hyperparameter}loss.png")
         plt.close()
         return accuracy
