@@ -190,7 +190,7 @@ class model():
                 label="training")
         plt.plot(range(len(self.history['val_accuracy'])), self.history['val_accuracy'],
                 label="validation")
-        plt.title(f'{self.stock} loss during training in epochs')
+        plt.title(f'{self.stock} accuracies during training in epochs')
         plt.xlabel('epoch')
         plt.ylabel('accuracy')
         plt.tight_layout()
